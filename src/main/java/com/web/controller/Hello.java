@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Hello {
     ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
     PersonDao dao = context.getBean(PersonDao.class);
-    Person person = dao.getContent(1);
+    Person person = dao.getPerson("buyer","37254660e226ea65ce6f1efd54233424");
     @RequestMapping("/hello")
     public String show(ModelMap map){
         map.addAttribute("user",person);

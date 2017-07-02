@@ -20,7 +20,7 @@
 						url:'/api/login',
 						success:function(result){
 							loading.hide();
-							location.href = '/';
+							location.href = '/index';
 						},
 						error:function(message){
 							loading.result(message||'登录失败');

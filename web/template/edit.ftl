@@ -3,17 +3,15 @@
 <#include "/include/head.ftl">
 <body>
 <#include "/include/support.ftl">
-<#include "/include/header.ftl"><div class="g-doc">
+<#include "/include/header.ftl">
+<div class="g-doc">
     <div class="m-tab m-tab-fw m-tab-simple f-cb">
         <h2>内容编辑</h2>
     </div>
-    <#if !product>
-    <div class="n-result">
-        <h3>内容不存在！</h3>
-    </div>
-    <#else>
+<#if product??>
     <div class="n-public">
-        <form class="m-form m-form-ht" id="form" method="post" action="/editSubmit?id=${product.id}" onsubmit="return false;" autocomplete="off">
+        <form class="m-form m-form-ht" id="form" method="post" action="/editSubmit?id=${product.id}"
+              onsubmit="return false;" autocomplete="off">
             <div class="fmitem">
                 <label class="fmlab">标题：</label>
                 <div class="fmipt">
@@ -24,22 +22,22 @@
             <div class="fmitem">
                 <label class="fmlab">摘要：</label>
                 <div class="fmipt">
-                    <input class="u-ipt ipt" name="summary" value="${product.summary}" placeholder="2-140字符"／>
+                    <input class="u-ipt ipt" name="summary" value="${product.summary}" placeholder="2-140字符" ／>
                 </div>
             </div>
             <div class="fmitem">
-            <label class="fmlab">图片：</label>
-            	<div class="fmipt" id="uploadType">
-	                <input name="pic" type="radio" value="url" checked /> 图片地址
-					<input name="pic" type="radio" value="file" /> 本地上传
-				</div>	
+                <label class="fmlab">图片：</label>
+                <div class="fmipt" id="uploadType">
+                    <input name="pic" type="radio" value="url" checked/> 图片地址
+                    <input name="pic" type="radio" value="file"/> 本地上传
+                </div>
             </div>
             <div class="fmitem">
                 <label class="fmlab"></label>
                 <div class="fmipt" id="urlUpload">
-                    <input class="u-ipt ipt"  name="image" placeholder="图片地址"/>
+                    <input class="u-ipt ipt" name="image" placeholder="图片地址"/>
                 </div>
-                <div class="fmipt" id="fileUpload"  style="display:none">
+                <div class="fmipt" id="fileUpload" style="display:none">
                     <input class="u-ipt ipt" name="file" type="file" id="fileUp"/>
                     <button class="u-btn u-btn-primary" id="upload">上传</button>
                 </div>
@@ -64,7 +62,11 @@
         </form>
         <span class="imgpre"><img src="${product.image}" alt="" id="imgpre"></span>
     </div>
-    </#if>
+<#else>
+    <div class="n-result">
+        <h3>内容不存在！</h3>
+    </div>
+</#if>
 </div>
 <#include "/include/footer.ftl">
 <script type="text/javascript" src="/js/global.js"></script>

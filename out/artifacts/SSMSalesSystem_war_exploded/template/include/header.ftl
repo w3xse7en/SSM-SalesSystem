@@ -8,7 +8,7 @@
         </#if>
         </div>
         <ul class="nav">
-            <li><a href="/">首页</a></li>
+            <li><a href="/index">首页</a></li>
             <#if user?? && user.userType==0>
             <li><a href="/account">账务</a></li>
             <li><a href="/settleAccount">购物车</a></li>
