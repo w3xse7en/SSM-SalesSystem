@@ -9,7 +9,6 @@ public class Transaction {
     private int contentId;
     private int personId;
     private int price;
-    private Date time;
 
     public int getContentId() {
         return contentId;
@@ -33,13 +32,5 @@ public class Transaction {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
     }
 }

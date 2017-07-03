@@ -9,10 +9,10 @@ import org.apache.ibatis.annotations.Select;
  */
 
 public interface PersonDao {
-    @Select("select * from person where userName = #{userName} and userPassword = #{userPassword}")
+    @Select("select * from person where userName = #{userName} and password = #{userPassword}")
     Person getPerson(@Param("userName") String userName, @Param("userPassword") String userPassword);
 
-    @Select("select userPassword from person where userName = #{userName}")
+    @Select("select password from person where userName = #{userName}")
     String getuserPassword(String userName);
 
     @Select("select userType from person where userName = #{userName}")
