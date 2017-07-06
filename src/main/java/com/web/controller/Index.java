@@ -21,7 +21,7 @@ public class Index {
             modelMap.addAttribute("user",cookieInfo.getCookieUser());
         }
         Map<String,Integer> map = new HashMap<String ,Integer>();
-        map.put("type",0);
+        map.put("type",1);
         modelMap.addAttribute("RequestParameters",map);
         return "index";
     }

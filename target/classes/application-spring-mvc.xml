@@ -14,7 +14,7 @@
                         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-    <context:component-scan base-package="com.javen.controller"/>
+    <context:component-scan base-package="com.web.controller"/>
     <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven/>
     <!-- 配置事务管理器 -->

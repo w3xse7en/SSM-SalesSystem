@@ -1,6 +1,6 @@
 import com.web.dao.PersonDao;
 import com.web.entity.Person;
-import com.web.service.IsUser;
+import com.web.dto.IsUser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

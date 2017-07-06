@@ -1,4 +1,4 @@
-import com.web.service.IsUser;
+import com.web.dto.IsUser;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
