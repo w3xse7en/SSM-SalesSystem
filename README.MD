@@ -16,7 +16,7 @@ IDE：Idea
 
 修改位于ROOT/WEB-INF/classes/db.properties的配置
 
-在sql中添加下面的语句，然后打开浏览器进入localhost:8080
+设置默认数据库ssm，在sql中添加下面的语句，然后打开浏览器进入localhost:8080
 
 how to easy work this project?
 
@@ -28,7 +28,9 @@ second: open ROOT/WEB-INF/classes/db.properties
 
 now you must write your sql driver,name and password
 
-third:write below statement into your sql and finally open your browser and enter localhost:8080
+third:set the database ssm and write below statement into your sql
+
+finally open your browser and enter localhost:8080
 
 create table person(
 id int auto_increment primary key comment "主键", 
