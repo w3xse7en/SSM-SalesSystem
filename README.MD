@@ -28,7 +28,7 @@ second: open ROOT/WEB-INF/classes/db.properties
 
 now you must write your sql driver,name and password
 
-third:write these into your sql and finally open your browser and enter localhost:8080
+third:write below statement into your sql and finally open your browser and enter localhost:8080
 
 create table person(
 id int auto_increment primary key comment "主键", 
