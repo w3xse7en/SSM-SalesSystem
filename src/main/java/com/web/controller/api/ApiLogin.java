@@ -1,9 +1,6 @@
 package com.web.controller.api;
 
-import com.web.dao.PersonDao;
-import com.web.dto.IsUser;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.web.dto.PersonDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +15,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class ApiLogin {
-    ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
-    IsUser isUser = context.getBean(IsUser.class);
-    PersonDao personDao = context.getBean(PersonDao.class);
+    PersonDto personDto = new PersonDto();
 
     @RequestMapping(value = "/api/login")
     @ResponseBody
     public ModelMap Login(@RequestParam("userName") String userName, @RequestParam("password") String password, ModelMap map, HttpServletResponse response) {
-        if (isUser.isUser(userName, password)) {
+        if (personDto.isUser(userName, password)) {
             map.addAttribute("code", 200);
             map.addAttribute("message", "success");
             map.addAttribute("result", true);
             Cookie userNameCookie = new Cookie("loginUserName", userName);
-            Cookie userTypeCookie = new Cookie("loginUserType", "" + personDao.getuserType(userName));
+            Cookie userTypeCookie = new Cookie("loginUserType", "" + personDto.getType(userName));
             userNameCookie.setPath("/");
             userTypeCookie.setPath("/");
             userNameCookie.setMaxAge(60 * 60);

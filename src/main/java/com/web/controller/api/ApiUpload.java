@@ -1,7 +1,5 @@
 package com.web.controller.api;
 
-import com.web.dao.PersonDao;
-import com.web.dto.IsUser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -29,7 +27,6 @@ public class ApiUpload {
         String realPath = request.getSession().getServletContext().getRealPath("/uploadPicture");
         String fileName = file.getOriginalFilename();
         String fileType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1, file.getOriginalFilename().length());
-        System.out.println(realPath + ":" + fileName + ":" + fileType);
         if (fileType.toLowerCase().equals("jpg")) {
             String webFileNamePath = "/uploadPicture/" + fileName;
             String realFileNamePath = realPath + "/" + fileName;
