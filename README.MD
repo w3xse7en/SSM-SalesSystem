@@ -10,6 +10,14 @@ IDE：Idea
 
 目的：小型销售系统,类似taobao.com
 
+如何看项目效果？
+
+将out/artifacts/ROOT中的ROOT放入你的tomcat的webapps下面
+
+修改位于ROOT/WEB-INF/classes/db.properties的配置
+
+在sql中添加下面的语句，然后打开浏览器进入localhost:8080
+
 how to easy work this project?
 
 do you see the out/artifacts/ROOT
