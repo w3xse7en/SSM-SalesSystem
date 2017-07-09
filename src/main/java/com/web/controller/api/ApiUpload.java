@@ -19,8 +19,6 @@ import java.io.IOException;
  */
 @Controller
 public class ApiUpload {
-    ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
-
     @RequestMapping(value = "/api/upload")
     @ResponseBody
     public ModelMap Upload(@RequestParam("file") MultipartFile file, ModelMap map, HttpServletRequest request, HttpServletResponse response) {

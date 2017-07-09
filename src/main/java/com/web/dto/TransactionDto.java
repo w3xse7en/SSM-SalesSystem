@@ -18,4 +18,8 @@ public class TransactionDto {
     public Transaction getTransaction(int id) {
         return dao.getTransaction(id);
     }
+
+    public void InsertTransaction(Transaction transaction){
+        dao.InsertTransaction(transaction);
+    }
 }

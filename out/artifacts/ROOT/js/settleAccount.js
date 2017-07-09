@@ -83,7 +83,7 @@
 				                		alert(json.message);
 				                	}
 				                }else{
-				                	loading.result(message||'购买失败');
+				                	loading.result('购买失败');
 				                }
 				            }
 					};
