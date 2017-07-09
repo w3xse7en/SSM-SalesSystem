@@ -14,7 +14,8 @@ import javax.annotation.Resource;
 public class TransactionDto {
     ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
     TransactionDao dao = context.getBean(TransactionDao.class);
-    public Transaction getTransaction(int id){
+
+    public Transaction getTransaction(int id) {
         return dao.getTransaction(id);
     }
 }

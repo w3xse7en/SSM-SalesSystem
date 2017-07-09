@@ -19,16 +19,27 @@ public class ProductDto {
         List<Product> productList = dao.getProductList();
         TransactionDto transactionDto = new TransactionDto();
         for (Product product : productList) {
-            Transaction transaction = null;
-            if (null != (transaction = transactionDto.getTransaction(product.getId()))) {
-                product.setIsBuy(true);
-                product.setIsSell(true);
-                product.setBuyPrice(transaction.getPrice());
-            } else {
-                product.setIsBuy(false);
-                product.setIsSell(false);
-            }
+            setProductInfo(transactionDto, product);
         }
         return productList;
+    }
+
+    public Product getProduct(int id) {
+        TransactionDto transactionDto = new TransactionDto();
+        Product product = dao.getProduct(id);
+        setProductInfo(transactionDto, product);
+        return product;
+    }
+
+    public void setProductInfo(TransactionDto transactionDto, Product product) {
+        Transaction transaction = null;
+        if (null != (transaction = transactionDto.getTransaction(product.getId()))) {
+            product.setIsBuy(true);
+            product.setIsSell(true);
+            product.setBuyPrice(transaction.getPrice());
+        } else {
+            product.setIsBuy(false);
+            product.setIsSell(false);
+        }
     }
 }

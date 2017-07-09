@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class Public {
     @RequestMapping(value = "/public")
-    public String ssm_public(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap){
+    public String ssm_public(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         CookieInfo cookieInfo = new CookieInfo(request);
-        if(cookieInfo.isCookieUser()){
-            modelMap.addAttribute("user",cookieInfo.getCookieUser());
+        if (cookieInfo.isCookieUser()) {
+            modelMap.addAttribute("user", cookieInfo.getCookieUser());
         }
         return "public";
     }

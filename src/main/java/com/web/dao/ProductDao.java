@@ -13,9 +13,17 @@ import java.util.List;
 public interface ProductDao {
     @Select("select * from content")
     @Results({
-            @Result(property = "summary",column = "abstract"),
-            @Result(property = "pic",column = "icon"),
-            @Result(property = "detail",column = "text")
+            @Result(property = "summary", column = "abstract"),
+            @Result(property = "pic", column = "icon"),
+            @Result(property = "detail", column = "text")
     })
     List<Product> getProductList();
+
+    @Select("select * from content where id = #{id}")
+    @Results({
+            @Result(property = "summary", column = "abstract"),
+            @Result(property = "pic", column = "icon"),
+            @Result(property = "detail", column = "text")
+    })
+    Product getProduct(int id);
 }

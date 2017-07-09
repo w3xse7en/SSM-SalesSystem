@@ -60,7 +60,7 @@
                 </div>
             </div>
         </form>
-        <span class="imgpre"><img src="${product.image}" alt="" id="imgpre"></span>
+        <span class="imgpre"><img src="${product.pic}" alt="" id="imgpre"></span>
     </div>
 <#else>
     <div class="n-result">

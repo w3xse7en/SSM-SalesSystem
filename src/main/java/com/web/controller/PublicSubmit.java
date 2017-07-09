@@ -18,22 +18,17 @@ import javax.servlet.http.HttpServletResponse;
 public class PublicSubmit {
     @RequestMapping(value = "/publicSubmit")
     public String publicSubmit(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap,
-                               @RequestParam("price")int price, @RequestParam("title")String title,
-                               @RequestParam("image")String pic, @RequestParam("summary")String summary,
-                               @RequestParam("detail")String detail
-                               ){
+                               @RequestParam("price") int price, @RequestParam("title") String title,
+                               @RequestParam("image") String pic, @RequestParam("summary") String summary,
+                               @RequestParam("detail") String detail
+    ) {
         CookieInfo cookieInfo = new CookieInfo(request);
-        if(cookieInfo.isCookieUser()){
-            modelMap.addAttribute("user",cookieInfo.getCookieUser());
+        if (cookieInfo.isCookieUser()) {
+            modelMap.addAttribute("user", cookieInfo.getCookieUser());
         }
-        System.out.println(pic);
-        System.out.println(detail);
-        System.out.println(price);
-        System.out.println(summary);
-        System.out.println(title);
         ContentDto contentDto = new ContentDto();
-        Content content = contentDto.getAndInsertContent(price,title,pic,summary,detail);
-        modelMap.addAttribute("product",content);
+        Content content = contentDto.getAndInsertContent(price, title, pic, summary, detail);
+        modelMap.addAttribute("product", content);
 
         return "publicSubmit";
     }

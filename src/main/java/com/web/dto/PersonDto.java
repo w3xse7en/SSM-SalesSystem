@@ -13,13 +13,15 @@ import javax.annotation.Resource;
 public class PersonDto {
     ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
     PersonDao dao = context.getBean(PersonDao.class);
-    public boolean isUser(String userName,String userPassword) {
-        if (userPassword.equals(dao.getuserPassword(userName))){
+
+    public boolean isUser(String userName, String userPassword) {
+        if (userPassword.equals(dao.getuserPassword(userName))) {
             return true;
         }
         return false;
     }
-    public int getType(String userName){
+
+    public int getType(String userName) {
         return dao.getuserType(userName);
     }
 }

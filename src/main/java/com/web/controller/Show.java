@@ -1,8 +1,10 @@
 package com.web.controller;
 
 import com.web.dto.ContentDto;
+import com.web.dto.ProductDto;
 import com.web.dto.TransactionDto;
 import com.web.entity.Content;
+import com.web.entity.Product;
 import com.web.entity.Transaction;
 import com.web.service.CookieInfo;
 import org.springframework.stereotype.Controller;
@@ -25,10 +27,9 @@ public class Show {
             modelMap.addAttribute("user", cookieInfo.getCookieUser());
 
         }
-                ContentDto contentDto = new ContentDto();
-                Content content = contentDto.getContent(id);
-                System.out.println(content.getPic());
-                modelMap.addAttribute("product",content);
-                return "show";
+        ProductDto productDto = new ProductDto();
+        Product product = productDto.getProduct(id);
+        modelMap.addAttribute("product", product);
+        return "show";
     }
 }

@@ -11,7 +11,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ContentDto {
     ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
     ContentDao dao = context.getBean(ContentDao.class);
-    public Content getAndInsertContent(int price, String title, String pic, String summary, String detail){
+
+    public Content getAndInsertContent(int price, String title, String pic, String summary, String detail) {
         Content content = new Content();
         content.setPrice(price);
         content.setTitle(title);
@@ -19,10 +20,13 @@ public class ContentDto {
         content.setSummary(summary);
         content.setDetail(detail);
         dao.insertPublic(content);
-        content.setId(dao.getContentId(price,title,pic,summary,detail));
+        content.setId(dao.getContentId(price, title, pic, summary, detail));
         return content;
     }
-    public Content getContent(int id){
-       return dao.getContent(id);
+
+    public void updateContent(Content content){dao.updateContent(content);}
+
+    public Content getContent(int id) {
+        return dao.getContent(id);
     }
 }
