@@ -33,6 +33,7 @@ public class ApiUpload {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println(realFileNamePath);
             map.addAttribute("code", 200);
             map.addAttribute("message", "success");
             map.addAttribute("result", webFileNamePath);

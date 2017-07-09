@@ -1,6 +1,9 @@
 package com.web.controller.api;
 
+import com.web.dto.ContentDto;
+import com.web.dto.TransactionDto;
 import com.web.entity.ApiBuyInfo;
+import com.web.entity.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,10 +24,18 @@ public class ApiBuy {
     @RequestMapping(value = "/api/buy")
     @ResponseBody
     public ModelMap Buy(@RequestBody List<ApiBuyInfo> buyList, ModelMap map, HttpServletRequest request, HttpServletResponse response) {
+        TransactionDto transactionDto = new TransactionDto();
+        ContentDto contentDto = new ContentDto();
+        Transaction transaction = new Transaction();
         for (ApiBuyInfo apiBuyInfo : buyList
                 ) {
-            System.out.println("id:" + apiBuyInfo.getId());
-            System.out.println("num:" + apiBuyInfo.getNum());
+            int price = contentDto.getContent(apiBuyInfo.getId()).getPrice();
+            transaction.setContentId(apiBuyInfo.getId());
+            transaction.setNum(apiBuyInfo.getNumber());
+            transaction.setPrice(price*apiBuyInfo.getNumber());
+            transaction.setPersonId(0);
+            transaction.setTime(System.currentTimeMillis());
+            transactionDto.InsertTransaction(transaction);
         }
         map.addAttribute("code", 200);
         map.addAttribute("message", "success");

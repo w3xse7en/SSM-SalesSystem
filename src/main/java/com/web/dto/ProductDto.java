@@ -37,6 +37,8 @@ public class ProductDto {
             product.setIsBuy(true);
             product.setIsSell(true);
             product.setBuyPrice(transaction.getPrice());
+            product.setBuyNum(transaction.getNum());
+            product.setTime(transaction.getTime());
         } else {
             product.setIsBuy(false);
             product.setIsSell(false);

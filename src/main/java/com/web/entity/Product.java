@@ -8,6 +8,15 @@ public class Product extends Content {
     private boolean isSell;
     private int buyNum;
     private int buyPrice;
+    private long time;
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
 
     public boolean getIsBuy() {
         return isBuy;

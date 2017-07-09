@@ -9,6 +9,24 @@ public class Transaction {
     private int contentId;
     private int personId;
     private int price;
+    private int num;
+    private long time;
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
 
     public int getContentId() {
         return contentId;

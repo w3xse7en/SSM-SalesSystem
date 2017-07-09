@@ -5,7 +5,7 @@ package com.web.entity;
  */
 public class ApiBuyInfo {
     private int id;
-    private int num;
+    private int number;
 
     public int getId() {
         return id;
@@ -15,11 +15,11 @@ public class ApiBuyInfo {
         this.id = id;
     }
 
-    public int getNum() {
-        return num;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

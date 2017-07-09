@@ -20,6 +20,7 @@ public class ApiLogin {
     @RequestMapping(value = "/api/login")
     @ResponseBody
     public ModelMap Login(@RequestParam("userName") String userName, @RequestParam("password") String password, ModelMap map, HttpServletResponse response) {
+        System.out.println(userName+":"+password);
         if (personDto.isUser(userName, password)) {
             map.addAttribute("code", 200);
             map.addAttribute("message", "success");

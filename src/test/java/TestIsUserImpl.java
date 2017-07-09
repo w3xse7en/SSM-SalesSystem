@@ -11,6 +11,7 @@ public class TestIsUserImpl {
         return personDto.isUser("buyer","123");
     }
     public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
         System.out.println(test());
     }
 }

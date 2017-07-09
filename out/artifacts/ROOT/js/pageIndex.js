@@ -25,10 +25,13 @@
 					ajax({
 						url:'/api/delete',
 						data:{id:id},
-						success:function(json){
+						success:function(result){
 							this.delItemNode(id);
 							loading.result('删除成功');
-						}.bind(this)
+						}.bind(this),
+                        error:function(message){
+                            loading.result(message||'删除失败');
+                        }
 					});
 				}.bind(this)
 			}).show();

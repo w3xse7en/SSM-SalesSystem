@@ -14,10 +14,11 @@ import java.sql.SQLException;
 public class TestContentDto {
     public static void main(String[] args) throws SQLException {
         ContentDto contentDto = new ContentDto();
-        Content content = contentDto.getContent(32);
-        content.setTitle("aaa");
-        contentDto.updateContent(content);
-        content = contentDto.getContent(32);
-        System.out.println(content.getTitle());
+//        Content content = contentDto.getContent(32);
+//        content.setTitle("aaa");
+//        contentDto.updateContent(content);
+//        content = contentDto.getContent(32);
+//        System.out.println(content.getTitle());
+        contentDto.deleteContent(29);
     }
 }

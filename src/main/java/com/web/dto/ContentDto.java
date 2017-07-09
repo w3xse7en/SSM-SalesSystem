@@ -29,4 +29,6 @@ public class ContentDto {
     public Content getContent(int id) {
         return dao.getContent(id);
     }
+
+    public void deleteContent(int id){dao.deleteContent(id);};
 }

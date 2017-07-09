@@ -14,14 +14,17 @@
             <div class="price">
                 <span class="v-unit">¥</span><span class="v-value">${product.price}</span>
             </div>
-            <div class="num">购买数量：<span id="plusNum" class="lessNum"><a>-</a></span><span class="totalNum"
-                                                                                          id="allNum">1</span><span
+            <div class="num">数量：<span id="plusNum" class="lessNum"><a>-</a></span><span class="totalNum"
+                                                                                          id="allNum">${product.buyNum}</span><span
                     id="addNum" class="moreNum"><a>+</a></span></div>
             <div class="oprt f-cb">
                 <#if user?? && user.userType==0>
                     <#if product.isBuy>
-                        <span class="u-btn u-btn-primary z-dis">已购买</span>
-                        <span class="buyprice">当时购买价格：¥${product.buyPrice}</span>
+                        <button class="u-btn u-btn-primary" id="add" data-id="${product.id}"
+                                data-title="${product.title}" data-price="${product.price}">
+                            再次购买
+                        </button>
+                        <span class="buyprice">当时购买价格：¥${product.buyPrice} 数量：${product.buyNum}</span>
                     <#else>
                         <button class="u-btn u-btn-primary" id="add" data-id="${product.id}"
                                 data-title="${product.title}" data-price="${product.price}">
