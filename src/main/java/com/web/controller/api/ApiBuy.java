@@ -26,16 +26,23 @@ public class ApiBuy {
     public ModelMap Buy(@RequestBody List<ApiBuyInfo> buyList, ModelMap map, HttpServletRequest request, HttpServletResponse response) {
         TransactionDto transactionDto = new TransactionDto();
         ContentDto contentDto = new ContentDto();
-        Transaction transaction = new Transaction();
+        Transaction transaction;
         for (ApiBuyInfo apiBuyInfo : buyList
                 ) {
             int price = contentDto.getContent(apiBuyInfo.getId()).getPrice();
-            transaction.setContentId(apiBuyInfo.getId());
-            transaction.setNum(apiBuyInfo.getNumber());
-            transaction.setPrice(price*apiBuyInfo.getNumber());
-            transaction.setPersonId(0);
-            transaction.setTime(System.currentTimeMillis());
-            transactionDto.InsertTransaction(transaction);
+            if ((transaction = transactionDto.getTransaction(apiBuyInfo.getId())) != null) {
+                int numb = transaction.getNum() + apiBuyInfo.getNumber();
+                transaction.setNum(numb);
+                transaction.setPrice(price*numb);
+                transactionDto.updateTransaction(transaction);
+            } else {
+                transaction.setContentId(apiBuyInfo.getId());
+                transaction.setNum(apiBuyInfo.getNumber());
+                transaction.setPrice(price * apiBuyInfo.getNumber());
+                transaction.setPersonId(0);
+                transaction.setTime(System.currentTimeMillis());
+                transactionDto.InsertTransaction(transaction);
+            }
         }
         map.addAttribute("code", 200);
         map.addAttribute("message", "success");

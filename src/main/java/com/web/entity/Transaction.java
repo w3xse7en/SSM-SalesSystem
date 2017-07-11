@@ -6,11 +6,20 @@ import java.util.Date;
  * Created by Mew on 2017/6/30.
  */
 public class Transaction {
+    private int id;
     private int contentId;
     private int personId;
     private int price;
     private int num;
     private long time;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getNum() {
         return num;

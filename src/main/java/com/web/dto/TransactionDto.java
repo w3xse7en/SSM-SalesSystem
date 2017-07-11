@@ -19,7 +19,11 @@ public class TransactionDto {
         return dao.getTransaction(id);
     }
 
-    public void InsertTransaction(Transaction transaction){
+    public void InsertTransaction(Transaction transaction) {
         dao.InsertTransaction(transaction);
+    }
+
+    public void updateTransaction(Transaction transaction) {
+        dao.updateTransaction(transaction);
     }
 }

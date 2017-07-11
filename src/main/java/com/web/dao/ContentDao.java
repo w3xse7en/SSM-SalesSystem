@@ -11,7 +11,7 @@ public interface ContentDao {
     void insertPublic(Content content);
 
 //    @Select("select id from content where price = #{0} and title = #{1} and icon = #{2} and abstract = #{3} and text = #{4}")
-//    上面的语句用于云服务器
+////    上面的语句用于云服务器
     @Select("select id from content where price = #{arg0} and title = #{arg1} and icon = #{arg2} and abstract = #{arg3} and text = #{arg4}")
     int getContentId(int price, String title, String pic, String summary, String detail);
 
