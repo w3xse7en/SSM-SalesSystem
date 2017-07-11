@@ -12,6 +12,10 @@ public class TestIsUserImpl {
     }
     public static void main(String[] args) {
         System.out.println(System.currentTimeMillis());
+        byte a = 127;
+        byte b = 127;
+        b+=a;
+
         System.out.println(test());
     }
 }
