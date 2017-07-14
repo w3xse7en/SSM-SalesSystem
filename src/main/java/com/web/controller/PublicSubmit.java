@@ -26,6 +26,7 @@ public class PublicSubmit {
         if (cookieInfo.isCookieUser()) {
             modelMap.addAttribute("user", cookieInfo.getCookieUser());
         }
+        System.out.println(pic);
         ContentDto contentDto = new ContentDto();
         Content content = contentDto.getAndInsertContent(price, title, pic, summary, detail);
         modelMap.addAttribute("product", content);

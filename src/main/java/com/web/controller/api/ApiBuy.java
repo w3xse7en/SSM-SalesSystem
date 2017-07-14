@@ -36,6 +36,7 @@ public class ApiBuy {
                 transaction.setPrice(price*numb);
                 transactionDto.updateTransaction(transaction);
             } else {
+                transaction = new Transaction();
                 transaction.setContentId(apiBuyInfo.getId());
                 transaction.setNum(apiBuyInfo.getNumber());
                 transaction.setPrice(price * apiBuyInfo.getNumber());

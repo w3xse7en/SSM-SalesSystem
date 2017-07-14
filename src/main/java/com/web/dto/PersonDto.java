@@ -24,4 +24,8 @@ public class PersonDto {
     public int getType(String userName) {
         return dao.getuserType(userName);
     }
+
+    public String getuserPassword(String userName){
+        return dao.getuserPassword(userName);
+    }
 }

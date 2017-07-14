@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TestIsUserImpl {
     @Autowired
     private static PersonDto personDto;
-    public static boolean test(){
-        return personDto.isUser("buyer","123");
-    }
-    public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
-        byte a = 127;
-        byte b = 127;
-        b+=a;
 
-        System.out.println(test());
+    public static boolean test() {
+        return personDto.isUser("buyer", "123");
+    }
+
+    public static void main(String[] args) {
+        int math = 51;
+        for (int i = 0; i <= math / 2; i++) {
+            System.out.println(i + "+" + (math - i) + "=" + math);
+        }
     }
 }
