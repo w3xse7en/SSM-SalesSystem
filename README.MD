@@ -8,7 +8,9 @@ IDE：Idea
 
 框架：Spring+SpringMVC+Mybatis
 
-目的：小型销售系统,类似taobao.com
+数据库：mysql
+
+服务器：tomcat
 
 如何看项目效果？
 
