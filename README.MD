@@ -48,7 +48,7 @@ ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 create table contentService(
 id int auto_increment primary key comment "主键",  
-price bigint  comment "当前价格",
+price double  comment "当前价格",
 title varchar(100) comment "标题",
 icon VARCHAR(100) comment "图片",
 abstract varchar(200) comment "摘要",
@@ -59,7 +59,7 @@ create table trx(
 id int auto_increment primary key comment "主键",  
 contentId int  comment "内容ID",
 personId int comment "用户ID",
-price int comment "购买价格",
+price double comment "购买价格",
 num varchar(100)comment "交易数量",
 time bigint comment "购买时间")
 ENGINE=InnoDB  DEFAULT CHARSET=utf8;
