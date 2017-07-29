@@ -7,7 +7,7 @@ public class Product extends Content {
     private boolean isBuy;
     private boolean isSell;
     private int buyNum;
-    private int buyPrice;
+    private Double buyPrice;
     private long time;
 
     public long getTime() {
@@ -42,11 +42,11 @@ public class Product extends Content {
         this.buyNum = buyNum;
     }
 
-    public int getBuyPrice() {
+    public double getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(int buyPrice) {
+    public void setBuyPrice(double buyPrice) {
         this.buyPrice = buyPrice;
     }
 }

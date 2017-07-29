@@ -1,8 +1,10 @@
 package com.web.controller;
 
-import com.web.dto.ContentDto;
+import com.web.service.ContentService;
+import com.web.service.impl.ContentImpl;
 import com.web.entity.Content;
 import com.web.service.CookieInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,15 @@ import java.util.Map;
  */
 @Controller
 public class EditSubmit {
+    private ContentService contentService;
+
+    @Autowired
+    public void setProductService(ContentService contentService) {
+        this.contentService = contentService;
+    }
     @RequestMapping(value = "/editSubmit")
     public String editSubmit(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap,
-                             @RequestParam("price") int price, @RequestParam("title") String title,
+                             @RequestParam("price") Double price, @RequestParam("title") String title,
                              @RequestParam("image") String pic, @RequestParam("summary") String summary,
                              @RequestParam("detail") String detail, @RequestParam(value = "id", required = true) Integer id) {
         CookieInfo cookieInfo = new CookieInfo(request);
@@ -30,9 +38,11 @@ public class EditSubmit {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("id", id);
         modelMap.addAttribute("RequestParameters", map);
-
-        ContentDto contentDto = new ContentDto();
-        Content content = contentDto.getContent(id);
+        if(pic.length()>100||price>Double.MAX_VALUE){
+            return "editSubmit";
+        }
+//        ContentImpl contentImpl = new ContentImpl();
+        Content content = contentService.getContent(id);
         //修改原数据
         content.setPrice(price);
         content.setTitle(title);
@@ -40,8 +50,8 @@ public class EditSubmit {
         content.setSummary(summary);
         content.setDetail(detail);
 
-        contentDto.updateContent(content);
-        content = contentDto.getContent(id);
+        contentService.updateContent(content);
+        content = contentService.getContent(id);
         modelMap.addAttribute("product", content);
         return "editSubmit";
     }

@@ -21,7 +21,7 @@
     <!-- Spring和mybatis的配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:application-context.xml</param-value>
+        <param-value>classpath:application-spring-mybatis.xml</param-value>
     </context-param>
 
     <!-- Spring监听器 -->
@@ -37,6 +37,10 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:application-spring-mvc.xml</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

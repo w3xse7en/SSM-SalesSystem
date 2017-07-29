@@ -46,7 +46,7 @@ nickName varchar(50) comment "用户昵称",
 userType tinyint(3) comment "类型，买家0，卖家1") 
 ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-create table content(
+create table contentService(
 id int auto_increment primary key comment "主键",  
 price bigint  comment "当前价格",
 title varchar(100) comment "标题",

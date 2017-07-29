@@ -1,8 +1,10 @@
 package com.web.controller;
 
-import com.web.dto.ContentDto;
+import com.web.service.ContentService;
+import com.web.service.impl.ContentImpl;
 import com.web.entity.Content;
 import com.web.service.CookieInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class PublicSubmit {
+    private ContentService contentService;
+
+    @Autowired
+    public void setProductService(ContentService contentService) {
+        this.contentService = contentService;
+    }
+
     @RequestMapping(value = "/publicSubmit")
     public String publicSubmit(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap,
-                               @RequestParam("price") int price, @RequestParam("title") String title,
+                               @RequestParam("price") Double price, @RequestParam("title") String title,
                                @RequestParam("image") String pic, @RequestParam("summary") String summary,
                                @RequestParam("detail") String detail
     ) {
@@ -26,9 +35,11 @@ public class PublicSubmit {
         if (cookieInfo.isCookieUser()) {
             modelMap.addAttribute("user", cookieInfo.getCookieUser());
         }
-        System.out.println(pic);
-        ContentDto contentDto = new ContentDto();
-        Content content = contentDto.getAndInsertContent(price, title, pic, summary, detail);
+//        ContentImpl contentImpl = new ContentImpl();
+        if (pic.length() > 100 || price > Double.MAX_VALUE) {
+            return "publicSubmit";
+        }
+        Content content = contentService.getAndInsertContent(price, title, pic, summary, detail);
         modelMap.addAttribute("product", content);
 
         return "publicSubmit";

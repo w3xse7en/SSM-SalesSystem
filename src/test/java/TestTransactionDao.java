@@ -1,4 +1,4 @@
-import com.web.dto.TransactionDto;
+import com.web.service.impl.TransactionImpl;
 import com.web.entity.Transaction;
 
 /**
@@ -9,9 +9,9 @@ public class TestTransactionDao {
     public static void main(String[] args) {
 //        ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
 //        TransactionDao dao = context.getBean(TransactionDao.class);
-//        Transaction transaction = dao.getTransaction(22);
+//        TransactionService transaction = dao.getTransaction(22);
 //        System.out.println(transaction.getContentId()+" " + transaction.getPrice()+ " " + transaction.getTitle());
-        TransactionDto getTransaction = new TransactionDto();
+        TransactionImpl getTransaction = new TransactionImpl();
         Transaction transaction = getTransaction.getTransaction(24);
         System.out.println( transaction.getContentId() + " " + transaction.getPrice() +" "+ transaction.getContentId() );
     }

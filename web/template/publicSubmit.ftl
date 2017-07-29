@@ -12,7 +12,7 @@
     </div>
     <#else>
     <div class="n-result">
-        <h3>发布失败！</h3>
+        <h3>发布失败！数据有误</h3>
         <p><a href="/public">[重新发布]</a><a href="/">[返回首页]</a></p>
     </div>
     </#if>

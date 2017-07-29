@@ -1,7 +1,9 @@
 package com.web.controller.api;
 
-import com.web.dto.ContentDto;
+import com.web.service.ContentService;
+import com.web.service.impl.ContentImpl;
 import com.web.service.CookieInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +18,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class ApiDelete {
+    private ContentService contentService;
+
+    @Autowired
+    public void setProductService(ContentService contentService) {
+        this.contentService = contentService;
+    }
 
     @RequestMapping(value = "/api/delete")
     @ResponseBody
     public ModelMap Upload(@RequestParam("id") int id, ModelMap map, HttpServletRequest request, HttpServletResponse response) {
         CookieInfo cookieInfo = new CookieInfo(request);
-        ContentDto contentDto = new ContentDto();
-        if (cookieInfo.isCookieUser() && cookieInfo.getCookieUser().getUserName().equals("admin")) {
-            contentDto.deleteContent(id);
+//        ContentImpl contentImpl = new ContentImpl();
+        if (cookieInfo.isCookieUser() && cookieInfo.getCookieUser().getUserName().equals("seller")) {
+            contentService.deleteContent(id);
             map.addAttribute("code", 200);
             map.addAttribute("message", "success");
             map.addAttribute("result", true);

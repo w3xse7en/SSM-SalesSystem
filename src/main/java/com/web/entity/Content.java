@@ -5,7 +5,7 @@ package com.web.entity;
  */
 public class Content {
     private int id;
-    private int price;
+    private Double price;
     private String title;
     private String pic;
     private String summary;
@@ -28,11 +28,11 @@ public class Content {
     }
 
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

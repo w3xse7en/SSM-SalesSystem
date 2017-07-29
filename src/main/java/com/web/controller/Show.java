@@ -1,12 +1,10 @@
 package com.web.controller;
 
-import com.web.dto.ContentDto;
-import com.web.dto.ProductDto;
-import com.web.dto.TransactionDto;
-import com.web.entity.Content;
+import com.web.service.ProductService;
+import com.web.service.impl.ProductImpl;
 import com.web.entity.Product;
-import com.web.entity.Transaction;
 import com.web.service.CookieInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class Show {
+    private ProductService productService;
+    @Autowired
+    public void setProductService(ProductService productService){ this.productService = productService;}
     @RequestMapping(value = "/show")
     public String show(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestParam("id") int id) {
         CookieInfo cookieInfo = new CookieInfo(request);
@@ -27,8 +28,8 @@ public class Show {
             modelMap.addAttribute("user", cookieInfo.getCookieUser());
 
         }
-        ProductDto productDto = new ProductDto();
-        Product product = productDto.getProduct(id);
+//        ProductImpl productImpl = new ProductImpl();
+        Product product = productService.getProduct(id);
         modelMap.addAttribute("product", product);
         return "show";
     }

@@ -1,8 +1,10 @@
 package com.web.controller;
 
-import com.web.dto.ProductDto;
+import com.web.service.ProductService;
+import com.web.service.impl.ProductImpl;
 import com.web.entity.Product;
 import com.web.service.CookieInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +19,20 @@ import java.util.List;
  */
 @Controller
 public class Account {
+    private ProductService productService;
+
+    @Autowired
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
+    }
     @RequestMapping(value = "/account")
     public String account(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         CookieInfo cookieInfo = new CookieInfo(request);
         if (cookieInfo.isCookieUser()) {
             modelMap.addAttribute("user", cookieInfo.getCookieUser());
         }
-        ProductDto productDto = new ProductDto();
-        List<Product> productList = productDto.getProductList();
+//        ProductImpl productImpl = new ProductImpl();
+        List<Product> productList = productService.getProductList();
         for (Iterator<Product> iterator = productList.iterator(); iterator.hasNext();
                 ) {
             Product product = iterator.next();

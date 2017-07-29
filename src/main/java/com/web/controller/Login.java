@@ -27,10 +27,10 @@ public class Login {
     }
 
     @RequestMapping(value = "/logout")
-    public String logout(HttpServletResponse response, HttpServletRequest request){
+    public String logout(HttpServletResponse response, HttpServletRequest request) {
         CookieInfo cookieInfo = new CookieInfo(request);
         Cookie userNameCookie = new Cookie("loginUserName", cookieInfo.getCookieUser().getUserName());
-        Cookie userTypeCookie = new Cookie("loginUserType", ""+cookieInfo.getCookieUser().getUserType());
+        Cookie userTypeCookie = new Cookie("loginUserType", "" + cookieInfo.getCookieUser().getUserType());
         userNameCookie.setMaxAge(0);
         userNameCookie.setPath("/");
         userTypeCookie.setMaxAge(0);

@@ -9,7 +9,7 @@ public class Transaction {
     private int id;
     private int contentId;
     private int personId;
-    private int price;
+    private Double price;
     private int num;
     private long time;
 
@@ -53,11 +53,11 @@ public class Transaction {
         this.personId = personId;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

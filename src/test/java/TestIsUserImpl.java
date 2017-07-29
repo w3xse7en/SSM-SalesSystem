@@ -1,4 +1,4 @@
-import com.web.dto.PersonDto;
+import com.web.service.impl.PersonImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class TestIsUserImpl {
     @Autowired
-    private static PersonDto personDto;
+    private static PersonImpl personImpl;
 
     public static boolean test() {
-        return personDto.isUser("buyer", "123");
+        return personImpl.isUser("buyer", "123");
     }
 
     public static void main(String[] args) {
