@@ -13,7 +13,7 @@
     </div>
     <#else>
     <div class="n-result">
-        <h3>编辑失败！数据有误</h3>
+        <h3>编辑失败！数据有误或字段过长</h3>
         <p><a href="/edit?id=${productId}">[重新编辑]</a><a href="/">[返回首页]</a></p>
     </div>
     </#if>
