@@ -44,6 +44,7 @@ public class ApiBuy {
                 int numb = transaction.getNum() + apiBuyInfo.getNumber();
                 transaction.setNum(numb);
                 transaction.setPrice(price * numb);
+                transaction.setTime(System.currentTimeMillis());
                 transactionService.updateTransaction(transaction);
             } else {
                 transaction = new Transaction();

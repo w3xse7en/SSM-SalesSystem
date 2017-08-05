@@ -1,7 +1,7 @@
 package com.web.service;
 
 import com.web.entity.Product;
-import com.web.service.impl.TransactionImpl;
+import com.web.entity.Transaction;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ public interface ProductService {
 
     Product getProduct(int id);
 
-    void setProductInfo(TransactionImpl transactionImpl, Product product);
+    void setProductInfo(TransactionService transactionService, Product product);
 }

@@ -15,6 +15,6 @@ public interface TransactionDao {
     @Insert("insert into trx (contentId,personId,price,num,time) VALUES(#{contentId},#{personId},#{price},#{num},#{time});")
     void InsertTransaction(Transaction transaction);
 
-    @Update("update trx set price = #{price},num = #{num} where id = #{id}")
+    @Update("update trx set price = #{price},num = #{num},time = #{time} where id = #{id}")
      void updateTransaction(Transaction transaction);
 }

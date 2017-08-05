@@ -4,6 +4,7 @@ import com.web.dao.ProductDao;
 import com.web.entity.Product;
 import com.web.entity.Transaction;
 import com.web.service.ProductService;
+import com.web.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +18,19 @@ public class ProductImpl implements ProductService {
     //    ApplicationContext context = new ClassPathXmlApplicationContext("application-spring-mybatis.xml");
 //    ProductDao dao = context.getBean(ProductDao.class);
     private ProductDao productDao;
-    private TransactionImpl transactionImpl;
+    private TransactionService transactionService;
 
     @Autowired
-    public void setDao(ProductDao productDao, TransactionImpl transactionImpl) {
+    public void setDao(ProductDao productDao, TransactionService transactionService) {
         this.productDao = productDao;
-        this.transactionImpl = transactionImpl;
+        this.transactionService = transactionService;
     }
 
     public List<Product> getProductList() {
         List<Product> productList = productDao.getProductList();
 //        TransactionImpl transactionImpl = new TransactionImpl();
         for (Product product : productList) {
-            setProductInfo(transactionImpl, product);
+            setProductInfo(transactionService, product);
         }
         return productList;
     }
@@ -37,13 +38,13 @@ public class ProductImpl implements ProductService {
     public Product getProduct(int id) {
 //        TransactionImpl transactionImpl = new TransactionImpl();
         Product product = productDao.getProduct(id);
-        setProductInfo(transactionImpl, product);
+        setProductInfo(transactionService, product);
         return product;
     }
 
-    public void setProductInfo(TransactionImpl transactionImpl, Product product) {
+    public void setProductInfo(TransactionService transactionService, Product product) {
         Transaction transaction = null;
-        if (null != (transaction = transactionImpl.getTransaction(product.getId()))) {
+        if (null != (transaction = transactionService.getTransaction(product.getId()))) {
             product.setIsBuy(true);
             product.setIsSell(true);
             product.setBuyPrice(transaction.getPrice());
