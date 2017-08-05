@@ -23,7 +23,8 @@ public class ApiUpload {
     @ResponseBody
     public ModelMap Upload(@RequestParam("file") MultipartFile file, ModelMap map, HttpServletRequest request, HttpServletResponse response) {
         String realPath = request.getSession().getServletContext().getRealPath("/uploadPicture");
-        String fileName = file.getOriginalFilename();
+        String fileName = Integer.toString(file.getOriginalFilename().hashCode()) + ".jpg";
+//        System.out.println("fileName:"+fileName+" "+file.getOriginalFilename().hashCode());
         String fileType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1, file.getOriginalFilename().length());
         if (fileType.toLowerCase().equals("jpg")) {
             String webFileNamePath = "/uploadPicture/" + fileName;
